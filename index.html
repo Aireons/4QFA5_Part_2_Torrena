@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Enter a Number</h1>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <button onclick="generateShape()">Submit</button>
+    <div id="output"></div>
+    
+    <script>
+        function generateShape() 
+        {
+            const input = document.getElementById("numberInput").value;
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = ""; // Clear previous output
+
+        const number = parseInt(input);
+            if (isNaN(number)){
+            outputDiv.innerHTML = "Please enter a valid number.";
+            return;}
+
+        const title = document.createElement("h2");
+            title.textContent = `Number inputted: ${number}`;
+            outputDiv.appendChild(title);
+
+        if (number % 2 === 0) 
+        {Triangle(number, outputDiv);} 
+        else
+        {Rectangle(number, outputDiv);}
+        }
+
+        function Rectangle(number, outputDiv) {
+        for (let i = number; i > 0; i--) 
+            {const line = document.createElement("p");
+            line.textContent = `${i} `.repeat(number).trim();
+            outputDiv.appendChild(line);}
+
+        }
+
+function Triangle(number, outputDiv) {
+    for (let i = number; i > 0; i--) {
+        const line = document.createElement("p");
+        line.textContent = `${i} `.repeat(i).trim();
+        outputDiv.appendChild(line);}
+}
+
+</script>
+</body>
+</html>
